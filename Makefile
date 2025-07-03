@@ -1,23 +1,6 @@
 # Makefile
 
-# Check if .env exists
-ifeq (,$(wildcard .env))
-$(error .env file is missing at .env. Please create one based on .env.example)
-endif
-
-# Load environment variables from .env
-include .env
-
 .PHONY: all ruff mypy clean help
-
-#################################################################################
-## Testing Commands
-#################################################################################
-
-tests: ## Run all tests
-	@echo "Running all tests..."
-	uv run pytest
-	@echo "All tests completed."
 
 ################################################################################
 ## Linting and Formatting
@@ -40,17 +23,11 @@ ruff-lint: ## Run Ruff linter with auto-fix
 	uv run ruff check . --fix --exit-non-zero-on-fix
 	@echo "Ruff checks complete."
 
-mypy: ## Run MyPy static type checker
-	@echo "Running MyPy static type checker..."
-	uv run mypy
-	@echo "MyPy static type checker complete."
-
 clean: ## Clean up cached generated files
 	@echo "Cleaning up generated files..."
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	find . -type d -name ".pytest_cache" -exec rm -rf {} +
 	find . -type d -name ".ruff_cache" -exec rm -rf {} +
-	find . -type d -name ".mypy_cache" -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
 	@echo "Cleanup complete."
 

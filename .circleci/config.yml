@@ -1,0 +1,55 @@
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@5.4.0
+  node: circleci/node@7.1.0
+  cdk: myhelix/cdk@1.15.2
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/python:3.12
+    steps:
+      - checkout
+      
+      - run:
+          name: Install node.js and CDK
+          command: |
+            npm install -g aws-cdk
+
+      - run:
+          name: Set up Python environment
+          command: |
+            cd cdk
+            python -m venv .venv
+            source .venv/bin/activate
+            pip install -r requirements.txt
+
+      - run:
+          name: Verify AWS credentials
+          command: aws sts get-caller-identity
+
+      - run:
+          name: Bootstrap CDK
+          command: |
+            cd cdk
+            source .venv/bin/activate
+            cdk bootstrap
+
+      - run:
+          name: Deploy CDK stacks
+          command: |
+            cd cdk
+            source .venv/bin/activate
+            cdk deploy --all --require-approval never
+
+      - run:
+          name: Output deployment info
+          command: |
+            echo "Deployment completed successfully"
+            echo "Check AWS Console for deployed resources"
+
+workflows:
+  deploy_app:
+    jobs:
+      - deploy

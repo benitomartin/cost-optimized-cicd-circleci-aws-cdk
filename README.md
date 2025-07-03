@@ -47,6 +47,54 @@ Briefly describe the project, its purpose, and key features.
    cd XXX
    ```
 
+   ```bash
+    cd cdk
+    cdk init app --language python
+    ```
+
+uv venv
+uv pip install -r requirements.txt
+
+
+CPUUtilization	0.25160913318
+
+CPUUtilization value (e.g., 0.2516)
+This number is a percentage expressed as a decimal fraction.
+So, 0.2516 means ~0.25% CPU utilization — very low CPU use.
+
+CloudWatch CPUUtilization metric measures how busy the CPU is over a given period (average).
+
+# Install EPEL repo
+sudo amazon-linux-extras install epel -y
+
+# Install stress-ng
+sudo yum install -y stress-ng
+
+
+# Generate CPU load (will trigger scaling)
+Generate CPU load (will trigger scaling)
+Run stress-ng for 5 minutes on 4 CPU cores in background
+stress-ng --cpu 4 --timeout 300s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2. Create a virtual environment:
 
    ```bash
