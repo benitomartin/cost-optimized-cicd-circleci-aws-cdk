@@ -6,6 +6,7 @@ orbs:
 
 jobs:
   deploy:
+    executor: node/default
     docker:
       - image: cimg/python:3.12
     steps:
