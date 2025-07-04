@@ -48,14 +48,10 @@ This project aims to create a cost-optimized CI/CD pipeline for managing AWS res
    cd cost-optimized-cicd-circleci-aws-cdk
    ```
 
-   ```bash
-    cd cdk
-    cdk init app --language python
-    ```
-
 2. Create a virtual environment:
 
     ```bash
+    cd cdk
     python -m venv .venv
     ```
   
