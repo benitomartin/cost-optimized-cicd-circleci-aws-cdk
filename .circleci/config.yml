@@ -115,16 +115,11 @@ workflows:
     jobs:
       - deploy
 
-  # Manual trigger via API or CircleCI UI
-  manual_destroy:
-    jobs:
-      - destroy
-
-  # Optional: scheduled destroy job (e.g., Every Friday at 13:00 UTC)
+  # Optional: scheduled destroy job (e.g., Every Friday at 13:30 UTC)
   scheduled_teardown:
     triggers:
       - schedule:
-          cron: "0 13 * * 5"  # Every Friday at 13:00 UTC
+          cron: "30 13 * * 5"  # Every Friday at 13:30 UTC
           filters:
             branches:
               only:
