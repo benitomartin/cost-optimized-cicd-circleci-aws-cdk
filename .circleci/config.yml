@@ -6,11 +6,16 @@ orbs:
 
 jobs:
   deploy:
-    executor: node/default
     docker:
-      - image: cimg/python:3.12
+      - image: cimg/node:24.3.0
     steps:
       - checkout
+
+      - run:
+          name: Install Python
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-venv python3-pip
       
       - run:
           name: Install node.js and CDK
