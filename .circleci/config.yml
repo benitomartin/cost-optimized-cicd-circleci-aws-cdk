@@ -119,7 +119,7 @@ workflows:
   scheduled_teardown:
     triggers:
       - schedule:
-          cron: "20 14 * * 5"  # Every Friday at 13:30 UTC
+          cron: "55 14 * * 5"  # Every Friday at 13:30 UTC
           filters:
             branches:
               only:
