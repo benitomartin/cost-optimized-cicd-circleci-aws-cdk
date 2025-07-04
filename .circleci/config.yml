@@ -91,7 +91,6 @@ workflows:
 
   # Manual trigger via API or CircleCI UI
   manual_destroy:
-    when: on_request
     jobs:
       - destroy
 
