@@ -105,6 +105,11 @@ class MonitoringStack(Stack):
                 title="Estimated Monthly Charges",
                 left=[billing_alarm.metric],
                 width=12,
-                height=6
+                height=6,
+                left_y_axis=cloudwatch.YAxisProps(
+                    label="USD",
+                    min=0,
+                    show_units=True
             )
+        )
         )
