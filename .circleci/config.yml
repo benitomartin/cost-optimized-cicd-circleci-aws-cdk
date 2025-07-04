@@ -115,11 +115,11 @@ workflows:
     jobs:
       - deploy
 
-  # Optional: scheduled destroy job (e.g., Every Friday at 13:30 UTC)
+  # Scheduled destroy job (e.g., Every Friday at 15:30 UTC)
   scheduled_teardown:
     triggers:
       - schedule:
-          cron: "55 14 * * 5"  # Every Friday at 13:30 UTC
+          cron: "30 15 * * 5"  # Every Friday at 15:30 UTC
           filters:
             branches:
               only:
